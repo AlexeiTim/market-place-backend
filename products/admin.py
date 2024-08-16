@@ -15,3 +15,8 @@ class CategoryAdminModel(admin.ModelAdmin):
 @admin.register(models.Brand)
 class BrandAdminModel(admin.ModelAdmin):
     list_display = ('name', )
+
+
+@admin.register(models.Review)
+class ReviewAdminModel(admin.ModelAdmin):
+    list_display = ('created_at', )

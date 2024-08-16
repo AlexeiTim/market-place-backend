@@ -8,6 +8,7 @@ router = DefaultRouter()
 router.register('products', views.ProductListViewSet, basename='products')
 router.register('categories', views.CategoryViewSet, basename='categories')
 router.register('brands', views.BrandViewSet, basename='brands')
+router.register('reviews', views.ReviewViewSet, basename='reviews')
 urlpatterns = [
 
 ]

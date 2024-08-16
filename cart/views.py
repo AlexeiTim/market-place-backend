@@ -3,12 +3,14 @@ from cart import serializers, models
 from rest_framework import viewsets, views, status
 from rest_framework.response import Response
 from products.models import Product
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 # Create your views here.
 
 
 class CartViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.Cart.objects.all()
     serializer_class = serializers.CartSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly, ]
 
     def get_queryset(self):
         return models.Cart.objects.all()[:1]
@@ -18,6 +20,7 @@ class CartItemViewSet(viewsets.ModelViewSet):
     queryset = models.CartItem.objects.all()
     serializer_class = serializers.CartItemSerializer
     pagination_class = None
+    permission_classes = [IsAuthenticatedOrReadOnly, ]
 
     def perform_create(self, serializer):
         cart = models.Cart.objects.first()

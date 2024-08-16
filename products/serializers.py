@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from products import models
-
+from django.contrib.auth.models import User
 
 class BrandSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,4 +20,19 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Product
+        fields = '__all__'
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'id']
+        ref_name = 'CustomUserSerializer'
+
+
+class ReviewSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
+
+    class Meta:
+        model = models.Review
         fields = '__all__'
