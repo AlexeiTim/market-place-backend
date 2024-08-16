@@ -6,8 +6,8 @@ class ProductFilter(filters.FilterSet):
     min_price = filters.NumberFilter(field_name='price', lookup_expr='gte')
     max_price = filters.NumberFilter(field_name='price', lookup_expr='lte')
     rating = filters.NumberFilter(field_name='rating')
-    category = filters.CharFilter(field_name='category__name')
-    brand = filters.CharFilter(field_name='brand__name')
+    category = filters.NumberFilter(field_name='category__id')
+    brand = filters.NumberFilter(field_name='brand__id')
     ordering = filters.OrderingFilter(
         fields=(
             ('price', 'price'),

@@ -9,11 +9,14 @@ class ProductListViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ProductSerializer
     filterset_class = filters.ProductFilter
 
+
 class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.Category.objects.all()
     serializer_class = serializers.CategorySerializer
+    pagination_class = None
 
 
 class BrandViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.Brand.objects.all()
     serializer_class = serializers.BrandSerializer
+    pagination_class = None
