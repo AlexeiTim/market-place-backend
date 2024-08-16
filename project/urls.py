@@ -23,6 +23,8 @@ urlpatterns = [
     path('api/', include('products.urls', namespace='products')),
     path('api/', include('cart.urls', namespace='cart')),
     path('api/', include('orders.urls', namespace='orders')),
+    path('api/', include('djoser.urls')),
+    path('api/', include('djoser.urls.authtoken')),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0),
          name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0),
