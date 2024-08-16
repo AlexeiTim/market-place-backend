@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-_o&$2ph^3gm&1$)+4+rc3v50#4k_i2ahp1%22kbnj)+9vvdh(d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['market-place-backend-54an.onrender.com']
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
