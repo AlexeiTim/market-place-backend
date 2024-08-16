@@ -6,12 +6,10 @@ SECRET_KEY = 'django-insecure-_o&$2ph^3gm&1$)+4+rc3v50#4k_i2ahp1%22kbnj)+9vvdh(d
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['market-place-backend-54an.onrender.com']
+ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://market-place-backend-54an.onrender.com',  # ваш бэкенд на Render
-    # 'https://ваш-домен-фронтенда.com',  # ваш фронтенд-домен
-]
+CSRF_TRUSTED_ORIGINS = ['https://market-place-backend-54an.onrender.com/', 'http://localhost:3000']
+CORS_ALLOW_ALL_ORIGINS = True
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -31,6 +29,7 @@ INSTALLED_APPS = [
     'django_filters',
     'drf_yasg',
     'cart',
+    'corsheaders',
     'products',
     'orders'
 ]
@@ -38,6 +37,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
