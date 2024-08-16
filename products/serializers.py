@@ -31,7 +31,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class ReviewSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
+    user = serializers.ReadOnlyField(source='user.username')
 
     class Meta:
         model = models.Review
