@@ -3,7 +3,6 @@ from orders import models
 
 
 
-
 class OrderSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(read_only=True)
     class Meta:

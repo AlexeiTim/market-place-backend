@@ -19,6 +19,7 @@ class Order(models.Model):
         choices=PAYMENT_METHODS,
         default='cash_on_delivery'
     )
+    delivery_address = models.CharField('Адрес доставки', max_length=255)
 
     def __str__(self):
         return f'Заказ от {self.created_at}'
