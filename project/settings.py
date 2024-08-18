@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django_filters',
     'drf_yasg',
     'djoser',
+    'wallet',
     'cart',
     'corsheaders',
     'products',

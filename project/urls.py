@@ -25,6 +25,7 @@ urlpatterns = [
     path('api/', include('orders.urls', namespace='orders')),
     path('api/', include('djoser.urls')),
     path('api/', include('djoser.urls.authtoken')),
+    path('api/', include('wallet.urls', namespace='wallet')),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0),
          name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0),
