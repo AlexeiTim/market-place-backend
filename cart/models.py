@@ -1,9 +1,10 @@
 from django.db import models
 from products.models import Product
-
+from django.contrib.auth.models import User
 
 class Cart(models.Model):
     created_at = models.DateTimeField('Дата и время создания корзины', auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return 'Общая корзина'

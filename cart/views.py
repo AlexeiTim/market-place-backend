@@ -10,9 +10,10 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 class CartViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = models.Cart.objects.all()
     serializer_class = serializers.CartSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly, ]
 
     def get_queryset(self):
+        if self.request.user:
+            return models.Cart.objects.filter(user=self.request.user)
         return models.Cart.objects.all()[:1]
 
 
@@ -20,10 +21,12 @@ class CartItemViewSet(viewsets.ModelViewSet):
     queryset = models.CartItem.objects.all()
     serializer_class = serializers.CartItemSerializer
     pagination_class = None
-    permission_classes = [IsAuthenticatedOrReadOnly, ]
+
+    def get_queryset(self):
+        return models.CartItem.objects.filter(cart__user=self.request.user)
 
     def perform_create(self, serializer):
-        cart = models.Cart.objects.first()
+        cart, created = models.Cart.objects.get_or_create(user=self.request.user)
         serializer.save(cart=cart)
 
     def partial_update(self, request, *args, **kwargs):
@@ -47,12 +50,11 @@ class AddToCartView(views.APIView):
             Response({"error": "Product ID is required"})
 
         try:
-            print(product_id)
             product = Product.objects.get(id=product_id)
         except Product.DoesNotExist:
             return Response({"error": "Product not found"})
 
-        cart, created = models.Cart.objects.get_or_create(id=1)
+        cart, created = models.Cart.objects.get_or_create(user=self.request.user)
 
         cart_item, created = models.CartItem.objects.get_or_create(cart=cart, product=product)
         if not created:
@@ -73,7 +75,7 @@ class RemoveFromCartView(views.APIView):
         if not product_id:
             return Response({ "error": "Product Id is required"})
 
-        cart = get_object_or_404(models.Cart, id=1)
+        cart = get_object_or_404(models.Cart, user=request.user)
         cart_item = get_object_or_404(models.CartItem, cart=cart, product_id=product_id)
         cart_item.delete()
 
