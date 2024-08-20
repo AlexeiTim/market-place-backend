@@ -8,7 +8,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://market-place-backend-54an.onrender.com', 'http://localhost:3000', 'https://nuxt-3-nitro-market.vercel.app']
+CSRF_TRUSTED_ORIGINS = ['https://market-place-backend-54an.onrender.com', 'https://market-place-backend-54an.onrender.com/api', 'http://localhost:3000', 'https://nuxt-3-nitro-market.vercel.app']
 CORS_ALLOW_ALL_ORIGINS = True
 
 REST_FRAMEWORK = {
