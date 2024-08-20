@@ -8,7 +8,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://market-place-backend-54an.onrender.com/', 'http://localhost:3000']
+CSRF_TRUSTED_ORIGINS = ['https://market-place-backend-54an.onrender.com', 'http://localhost:3000', 'https://nuxt-3-nitro-market.vercel.app']
 CORS_ALLOW_ALL_ORIGINS = True
 
 REST_FRAMEWORK = {
@@ -81,12 +81,6 @@ DATABASES = {
         'PORT': '6543',
     }
 }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
